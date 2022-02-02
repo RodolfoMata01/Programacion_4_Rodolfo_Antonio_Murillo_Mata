@@ -75,15 +75,88 @@
             })
         </script>
     </div>
-
+<!--ejercicio 3-->
     <div>
         <h1>Ejercicio 3</h1>
-        
+
+        <div id=message5>
+
+            <ul>
+                <br>
+                <li v-for="(item,index) in items" v-on:click="getInfo(index)">
+                    <input type="radio" name="selected" v-model="item.cheked" value="item.next">
+                    <label>{{ item.text }}</label> <label>-</label> <label>{{ item.text2 }}</label> <label>-</label> <label>{{ item.text3 }}</label>
+                </li>
+                <br>
+                
+            </ul> 
+            <div class="col-md-6" >
+                <div class="form-group" >
+                    <label>Nombre</label>
+                    <input type="text" v-model="newItem" class="form-control" v-on:keyup.enter="addItem"> <!-- este input estará relacionado con la variable nombre-->
+            
+                    <label>Año lanzamiento</label>
+                    <input type="text" v-model="newItem2" class="form-control" v-on:keyup.enter="addItem">
+                    
+                    <label>Datos</label>
+                    <input type="text" v-model="newItem3" class="form-control" v-on:keyup.enter="addItem">
+                </div>
+                <button type="button" class="btn btn-success" v-on:click="addItem">Añadir</button>
+                <button type="button" class="btn btn-danger" v-on:click="deleteItem(index)" onclick="alert('Se ha eliminado un elemento')">Eliminar</button>
+            </div>
+
+
+        </div>
+
+        <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+
+        <script>
+            new Vue({
+                el:"#message5",
+                data:{
+                    items:[{text: 'Pokémon 3: The Movie', text2: '2000', text3: 'Pokémon 3: The Movie – Spell of the Unown: Entei[a] es una película de anime japonesa de 2000 dirigida por Kunihiko Yuyama como la tercera película de la franquicia Pokémon.', cheked: false}, 
+                    
+                    {text: 'Pokémon: Destiny Deoxys', text2: '2004', text3: 'Pokémon: Destiny Deoxys[a] es una película de anime japonesa de 2004 dirigida por Kunihiko Yuyama. Es la séptima película de la serie Pokémon y la segunda película lanzada bajo Pocket Monsters Advanced Generation en Japón.', cheked: false}, 
+                    
+                    {text: 'Pokémon the Movie: Diancie and the Cocoon of Destruction', text2: '2014', text3: 'la decimoséptima de la franquicia Pokémon creada por Satoshi Tajiri y producida por OLM, y la primera de la serie XY.', cheked: false}],
+                    
+                    newItem:'',
+                    newItem2:'',
+                    newItem3:''
+                },
+                methods:{
+                    addItem: function(){
+                        var text;
+                        text=this.newItem;
+                        var text2;
+                        text2=this.newItem2;
+                        var text3;
+                        text3=this.newItem3;
+                        if(text, text2, text3){
+                            this.items.push({
+                                text:text,
+                                text2:text2,
+                                text3:text3,
+                                cheked:false
+                            });
+                            this.newItem='';
+                            this.newItem2='';
+                            this.newItem3='';
+
+                        }
+                    },
+                    deleteItem: function(index){
+                        this.items.splice(index,1);
+                    }
+                }
+            });
+        </script>
 
 
 
     </div>
 
+ <!--cuarto ejercicio que sale en el buzon guia-->
     <div class="container">
         <h1>Ejemplo Javascrtip</h1>
         <div class="mb-3">
